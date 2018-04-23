@@ -1,0 +1,144 @@
+<?php
+
+		include('j2s.php');
+
+	?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="jss.css">
+	
+</head>
+<body>
+
+
+
+
+<div id="menu">
+	<ul>
+		<li>
+			<a href="">VIDEOS</a>
+		</li>
+
+		<li>
+			<a href="present.html">PRESENTATION</a>
+		</li>
+		<li>
+			<a href="">ADMINISTRATEURS</a>
+		</li>
+		<li>
+			<a href="connection.html">CONNEXION</a>
+		</li>
+	</ul>
+	
+</div>
+
+
+<p>
+<div>
+<form method="js.php">
+
+<h1>inscription</h1>
+
+
+<label>pseudo</label><br>
+	<input type="text" name="pseudo" placeholder="entrez votre pseudo"><br><br>
+	<label>mot de pass</label><br>
+	<input type="password" name="mdp" placeholder="entrez votre mot de passe" required=""><br><br>
+	<label>confirmer mot de pass</label><br>
+	<input type="password" name="mdp2" placeholder="confirmer mot de passe" required=""><br><br>
+	<input type="submit" name="ok" value="s'inscrire"><br>
+		
+</form>	
+</div>
+</p>
+<div >
+	<h5>vous avez dejà un compte connectez-vous ici.</h5>
+		<button><a href="connection.html"></a> connexion</button>
+</div>
+
+<style type="text/css">
+	
+	body {
+		
+		text-align: center;
+		background-color: skyblue;
+		background-image: url(imm.png);
+
+		}
+
+
+#inscription {
+	background: rgba(255, 255, 255, 0.86);
+}
+
+body p{
+
+	border: 15px solid;
+	background-color:#b5daeb;border: 4px blue;min-height:80px;margin-left:2%;margin-right:3%.
+     
+		}	
+
+
+body label{
+	color: black;
+
+	 }
+
+#menu{
+	text-align: right;
+	background-color: skyblue;
+}
+
+#menu li{
+	display: inline-block;
+display: inline-table;
+	
+
+	
+
+}
+
+#menu li a{
+
+	text-decoration: none;
+	width: 160px;
+	height: 30px;
+	display: block;
+	top: 30px;
+	font-size: 1,5em;
+
+	
+}
+	
+<?php 
+session_start();
+
+if(isset($_POST['ok'])){
+    $db=mysqli_connect('localhost', 'aissatou', 'auf', 'vuejs') ;
+
+    $pseudo = ($_POST['pseudo']);
+    $mdp    = ($_POST['mdp']);
+    $mdp2 = ($_POST['mdp2']);
+
+    if($mdp==$mdp2){
+        $sql="INSERT INTO vue(pseudo, mdp) VALUES('$pseudo', '$mdp')";
+        mysqli_query($db, $sql);
+          header('Location: connection.html');
+
+    }else{
+        echo "bad";
+    }
+
+}
+
+?>
+
+
+
+
+</body>
+</html>
